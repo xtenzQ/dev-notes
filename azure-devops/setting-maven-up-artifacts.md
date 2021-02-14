@@ -3,12 +3,11 @@
 While setting up my Maven, I encountered several problems and found no solution on the Internet. So here is my quick guide on how to set up your Maven to work with Azure DevOps Artifacts. 😊
 
 **Table of contents**
-- [Setting Maven up to work with Azure DevOps Artifcats](#setting-maven-up-to-work-with-azure-devops-artifcats)
-  * [General settings](#general-settings)
-  * [Fixing errors](#fixing-errors)
-    + [401 Unauthorized](#401-unauthorized)
-    + [403 Forbidden](#403-forbidden)
-    + [500 Internal Server Error](#500-internal-server-error)
+ * [General settings](#general-settings)
+ * [Fixing errors](#fixing-errors)
+   + [401 Unauthorized](#401-unauthorized)
+   + [403 Forbidden](#403-forbidden)
+   + [500 Internal Server Error](#500-internal-server-error)
 
 ## General settings
 
