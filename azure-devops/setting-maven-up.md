@@ -1,6 +1,6 @@
 # Setting Maven up to work with Azure DevOps Artifacts
 
-While setting up my Maven, I encountered several problems and found no solution on the Internet. So here is my quick guide how to set up your Maven to work with Azure DevOps Artifcats. 😊
+While setting up my Maven, I encountered several problems and found no solution on the Internet. So here is my quick guide on how to set up your Maven to work with Azure DevOps Artifacts. 😊
 
 **Table of contents**
 - [Setting Maven up to work with Azure DevOps Artifcats](#setting-maven-up-to-work-with-azure-devops-artifcats)
@@ -12,7 +12,7 @@ While setting up my Maven, I encountered several problems and found no solution 
 
 ## General settings
 
-To successfully connect to Azure DevOps project, you need to:
+To successfully connect to the Azure DevOps project, you need to:
 1. Go to **Artifacts** menu (on the left)
 2. Click **Connect to feed**
 3. Click **Maven** 
