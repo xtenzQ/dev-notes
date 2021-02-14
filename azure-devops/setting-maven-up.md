@@ -2,6 +2,16 @@
 
 While setting up my Maven I encountered several problems and found no solution on the Internet. So here is my quick guide how to set up your Maven to work with Azure DevOps Artifcats 😊
 
+**Table of contents**
+- [Setting Maven up to work with Azure DevOps Artifcats](#setting-maven-up-to-work-with-azure-devops-artifcats)
+  * [General settings](#general-settings)
+  * [Fixing errors](#fixing-errors)
+    + [401 Unauthorized](#401-unauthorized)
+    + [403 Forbidden](#403-forbidden)
+    + [500 Internal Server Error](#500-internal-server-error)
+
+## General settings
+
 To successfully connect to Azure DevOps project you need to:
 1. Go to **Artifacts** menu (on the left)
 2. Click **Connect to feed**
@@ -65,20 +75,6 @@ And `pom.xml` like this:
 
 Here comes all error that I encountered.
 
-### 403 Forbidden
-
-403 error means, as we all know, that we have no access to a remote repo. So it's likely your proxy is blocking the connection or your SSL certificate that is used in Java is outdated. The proxy problem could be fixed by excluding Azure DevOps URL from proxy in `settings.xml` especially when Azure DevOps is located inside your company network so you don't need a proxy:
-```XML
-<proxies>
-    <proxy>
-        ...
-        <nonProxyHosts>
-            azuredevops.myorg.com
-        </nonProxyHosts>
-    </proxy>
-<proxy>
-```
-
 ### 401 Unauthorized
 
 It usually occurs when repo `id` in `pom.xml` and `settings.xml` mistmatch or `url` is not `https` so check it first.
@@ -93,6 +89,20 @@ Then click **Security**:
 Choose your **token** and try to set it to **Full Access**. I don't really recommend you to leave full access so adjust permissions settings afterwards:
 
 ![](img/edit_token.jpg)
+
+### 403 Forbidden
+
+403 error means, as we all know, that we have no access to a remote repo. So it's likely your proxy is blocking the connection or your SSL certificate that is used in Java is outdated. The proxy problem could be fixed by excluding Azure DevOps URL from proxy in `settings.xml` especially when Azure DevOps is located inside your company network so you don't need a proxy:
+```XML
+<proxies>
+    <proxy>
+        ...
+        <nonProxyHosts>
+            azuredevops.myorg.com
+        </nonProxyHosts>
+    </proxy>
+<proxy>
+```
 
 ### 500 Internal Server Error
 
