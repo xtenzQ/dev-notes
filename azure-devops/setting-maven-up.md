@@ -1,20 +1,19 @@
-# Setting Maven up to work with Azure DevOps
+# Setting Maven up to work with Azure DevOps Artifcats
+
+While setting up my Maven I encountered several problems and found no solution on the Internet. So here is my quick guide how to set up your Maven to work with Azure DevOps Artifcats 😊
 
 To successfully connect to Azure DevOps project you need to:
-1. Go to **Artifacts** menu
-
-![](img/menu.jpg)
-
+1. Go to **Artifacts** menu (on the left)
 2. Click **Connect to feed**
 3. Click **Maven** 
 
 ![](img/connect-to-feed.jpg)
 
-4. Generate Maven Credentials
-5. Copy credentials to `settings.xml`
-6. Copy repository settings to `pom.xml` (insert it into `<repositories>` and `<distributionManagement>`)
+4. Click **Generate Maven Credentials** and save it somewhere
+5. Copy credentials to `settings.xml` as it's said in the window
+6. Copy repository settings to `pom.xml` (both into `<repositories>` and `<distributionManagement>`)
 
-`settings.xml`:
+`settings.xml` should look like this:
 ```XML
 ...
 <servers>
@@ -26,7 +25,7 @@ To successfully connect to Azure DevOps project you need to:
 </servers>
 ...
 ```
-`pom.xml`:
+And `pom.xml` like this:
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -64,9 +63,11 @@ To successfully connect to Azure DevOps project you need to:
 
 ## Fixing errors
 
+Here comes all error that I encountered.
+
 ### 403 Forbidden
 
-It could be fixed by excluding Azure DevOps URL from proxy in `settings.xml`:
+403 error means, as we all know, that we have no access to a remote repo. So it's likely your proxy is blocking the connection or your SSL certificate that is used in Java is outdated. The proxy problem could be fixed by excluding Azure DevOps URL from proxy in `settings.xml` especially when Azure DevOps is located inside your company network so you don't need a proxy:
 ```XML
 <proxies>
     <proxy>
@@ -80,16 +81,16 @@ It could be fixed by excluding Azure DevOps URL from proxy in `settings.xml`:
 
 ### 401 Unauthorized
 
-Check if `pom.xml` and `settings.xml` has the same `id` and `url` uses `https`. 
-If the error is still present go to your **Profile**:
+It usually occurs when repo `id` in `pom.xml` and `settings.xml` mistmatch or `url` is not `https` so check it first.
+The second reason is usually when you created a token and didn't give it enough permissions for deployment. To fix it go to your profile:
 
 ![](img/profile.jpg)
 
-Click **Security**:
+Then click **Security**:
 
 ![](img/personal_tokens.jpg)
 
-Choose your **token** and set it to Full Access or make custom settings:
+Choose your **token** and try to set it to **Full Access**. I don't really recommend you to leave full access so adjust permissions settings afterwards:
 
 ![](img/edit_token.jpg)
 
