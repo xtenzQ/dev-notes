@@ -81,16 +81,16 @@ Here comes all error that I encountered.
 
 ### 401 Unauthorized
 
-Check if `pom.xml` and `settings.xml` has the same repo `id` and `url` uses `https`. 
-If the error is still present go to your **Profile**:
+It usually occurs when repo `id` in `pom.xml` and `settings.xml` mistmatch or `url` is not `https` so check it first.
+The second reason is usually when you created a token and didn't give it enough permissions for deployment. To fix it go to your profile:
 
 ![](img/profile.jpg)
 
-Click **Security**:
+Then click **Security**:
 
 ![](img/personal_tokens.jpg)
 
-Choose your **token** and set it to Full Access or make custom settings:
+Choose your **token** and try to set it to **Full Access**. I don't really recommend you to leave full access so adjust permissions settings afterwards:
 
 ![](img/edit_token.jpg)
 
