@@ -1,6 +1,6 @@
-# Setting Maven up to work with Azure DevOps Artifcats
+# Setting Maven up to work with Azure DevOps Artifacts
 
-While setting up my Maven I encountered several problems and found no solution on the Internet. So here is my quick guide how to set up your Maven to work with Azure DevOps Artifcats 😊
+While setting up my Maven, I encountered several problems and found no solution on the Internet. So here is my quick guide how to set up your Maven to work with Azure DevOps Artifcats. 😊
 
 **Table of contents**
 - [Setting Maven up to work with Azure DevOps Artifcats](#setting-maven-up-to-work-with-azure-devops-artifcats)
@@ -12,7 +12,7 @@ While setting up my Maven I encountered several problems and found no solution o
 
 ## General settings
 
-To successfully connect to Azure DevOps project you need to:
+To successfully connect to Azure DevOps project, you need to:
 1. Go to **Artifacts** menu (on the left)
 2. Click **Connect to feed**
 3. Click **Maven** 
@@ -73,12 +73,12 @@ And `pom.xml` like this:
 
 ## Fixing errors
 
-Here comes all error that I encountered.
+Here is all error that I encountered.
 
 ### 401 Unauthorized
 
-It usually occurs when repo `id` in `pom.xml` and `settings.xml` mistmatch or `url` is not `https` so check it first.
-The second reason is usually when you created a token and didn't give it enough permissions for deployment. To fix it go to your profile:
+It usually occurs when repo `id` in `pom.xml` and `settings.xml` mismatch or `url` is not `https`, so check it first.
+The second reason is when you created a token and didn't give it enough permissions for deployment. To fix it, go to your profile:
 
 ![](img/profile.jpg)
 
@@ -86,13 +86,13 @@ Then click **Security**:
 
 ![](img/personal_tokens.jpg)
 
-Choose your **token** and try to set it to **Full Access**. I don't really recommend you to leave full access so adjust permissions settings afterwards:
+Choose your **token** and try to set it to **Full Access**. I don't recommend you to leave full access, so adjust permissions settings afterward:
 
 ![](img/edit_token.jpg)
 
 ### 403 Forbidden
 
-403 error means, as we all know, that we have no access to a remote repo. So it's likely your proxy is blocking the connection or your SSL certificate that is used in Java is outdated. The proxy problem could be fixed by excluding Azure DevOps URL from proxy in `settings.xml` especially when Azure DevOps is located inside your company network so you don't need a proxy:
+403 error means as we all know, that we have no access to a remote repo. So it's likely your proxy is blocking the connection, or your SSL certificate that is used in Java is outdated. The proxy problem could be fixed by excluding Azure DevOps URL from proxy in `settings.xml`, mostly when Azure DevOps is located inside your company network, so you don't need a proxy:
 ```XML
 <proxies>
     <proxy>
@@ -106,6 +106,6 @@ Choose your **token** and try to set it to **Full Access**. I don't really recom
 
 ### 500 Internal Server Error
 
-If your Azure DevOps has no access to Maven repositories, just go to `Artifacts` -> `Feed settings` -> `Upstream sources` and delete Maven from list.
+If your Azure DevOps has no access to Maven repositories, go to `Artifacts` -> `Feed settings` -> `Upstream sources` and delete Maven from the list.
 
 ![](img/upstream_sources.jpg)
