@@ -1,11 +1,15 @@
-# Setting Maven Up to work with Azure DevOps
+# Setting Maven up to work with Azure DevOps
 
 To successfully connect to Azure DevOps project you need to:
 1. Go to **Artifacts** menu
+
 ![](img/menu.jpg)
+
 2. Click **Connect to feed**
-3. Click **Maven**
+3. Click **Maven** 
+
 ![](img/connect-to-feed.jpg)
+
 4. Generate Maven Credentials
 5. Copy credentials to `settings.xml`
 6. Copy repository settings to `pom.xml` (insert it into `<repositories>` and `<distributionManagement>`)
@@ -78,14 +82,19 @@ It could be fixed by excluding Azure DevOps URL from proxy in `settings.xml`:
 
 Check if `pom.xml` and `settings.xml` has the same `id` and `url` uses `https`. 
 If the error is still present go to your **Profile**:
-![](img/profile.jpg)
-Click **Security**:
-![](img/personal_tokens.jpg)
-Choose your **token** and set it to Full Access or make custom settings:
-![](img/edit_token.jpg)
 
+![](img/profile.jpg)
+
+Click **Security**:
+
+![](img/personal_tokens.jpg)
+
+Choose your **token** and set it to Full Access or make custom settings:
+
+![](img/edit_token.jpg)
 
 ### 500 Internal Server Error
 
 If your Azure DevOps has no access to Maven repositories, just go to `Artifacts` -> `Feed settings` -> `Upstream sources` and delete Maven from list.
+
 ![](img/upstream_sources.jpg)
