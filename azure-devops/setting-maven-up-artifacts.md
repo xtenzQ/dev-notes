@@ -85,9 +85,7 @@ Then click **Security**:
 
 ![](img/personal_tokens.jpg)
 
-Choose your **token** and try to set it to **Full Access**. I don't recommend you to leave full access, so adjust permissions settings afterward:
-
-![](img/edit_token.jpg)
+Choose your **token** and try to give it all neccessary permissions (write & read).
 
 ### 403 Forbidden
 
